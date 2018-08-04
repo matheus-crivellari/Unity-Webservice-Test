@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fd4bf9a4bccea46a756eb6258a978e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScore: {fileID: 676349712}
+  textScore: {fileID: 766157443}
   textTitle: {fileID: 147064706}
   textQuestion: {fileID: 49389036}
   alternative1: {fileID: 2080888943}

@@ -1,4 +1,5 @@
 ﻿using Quiz;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +40,9 @@ public class QuestionCanvas : MonoBehaviour {
     GameObject panelFinished = null;
     #endregion
 
+    /**
+     * Hides all feedback panels.
+     */
     public void HideFeedback()
     {
         if(successFeedback)
@@ -54,24 +58,45 @@ public class QuestionCanvas : MonoBehaviour {
             panelFinished.SetActive(false);
     }
 
+    /**
+     * Displays Success feedback panel.
+     */
     public void Success()
     {
         if(successFeedback)
             successFeedback.SetActive(true);
     }
 
+    /**
+     * Displays Failure feedback panel.
+     */
     public void Failure()
     {
         if(failureFeedback)
             failureFeedback.SetActive(true);
     }
 
+    /**
+     * Sets score display value.
+     */
+    public void SetScore(int score)
+    {
+        if (textScore)
+            textScore.text = score.ToString("D4"); // Format score value to display with four leading zeroes.
+    }
+
+    /**
+     * Displays Finished feedback panel.
+     */
     public void FinishedQuiz()
     {
         if (panelFinished)
             panelFinished.SetActive(true);
     }
 
+    /**
+     * Displays a new question on the screen.
+     */
     public void SetQuestion(Question question, int questionNumber)
     {
         if (textQuestion)

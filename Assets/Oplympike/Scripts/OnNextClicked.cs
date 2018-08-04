@@ -3,13 +3,9 @@ using UnityEngine.UI;
 
 public class OnNextClicked : MonoBehaviour {
 
-    private Button button = null;
-
-    private void Start()
-    {
-        button = GetComponent<Button>();
-    }
-
+    /**
+     * Fired when "Next" Button is clicked.
+     */
     public void OnNextButtonClicked()
     {
         if (!QuizManager.Instance.IsLastQuestion)

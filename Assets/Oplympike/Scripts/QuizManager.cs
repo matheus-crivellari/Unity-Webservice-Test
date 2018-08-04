@@ -24,6 +24,7 @@ public class QuizManager : MonoBehaviour {
     #region Private Fields
     private List<Question> questions;
     private int currentQuestion = 0;
+    private int score = 0;
     #endregion
 
     #region Public Properties
@@ -39,6 +40,9 @@ public class QuizManager : MonoBehaviour {
         }
     }
 
+    /**
+     * Tells if the current question is the last.
+     */
     public bool IsLastQuestion
     {
         get
@@ -77,6 +81,9 @@ public class QuizManager : MonoBehaviour {
         _instance = this;
 	}
 
+    /**
+     * Renders a question on the screen.
+     */
     public void RenderQuestion()
     {
         Question q = questions[currentQuestion]; // Gets the current question.
@@ -87,6 +94,9 @@ public class QuizManager : MonoBehaviour {
         }
     }
 
+    /**
+     * Requests next question to be rendered on screen.
+     */
     public void NextQuestion()
     {
         if (currentQuestion < questions.Count)
@@ -96,12 +106,18 @@ public class QuizManager : MonoBehaviour {
         }
     }
 
+    /**
+     * Requests Finished Quiz panel to be displayed.
+     */
     public void FinishedQuiz()
     {
         if(canvas)
             canvas.FinishedQuiz();
     }
 
+    /**
+     * Requests all feedback panel to be hidden.
+     */
     public void HideFeedback()
     {
         if(canvas)
@@ -109,7 +125,7 @@ public class QuizManager : MonoBehaviour {
     }
 
     /**
-     * Respond current question with selected option.
+     * Responds current question with selected option.
      */
     public void Respond(ButtonOption selectedOption)
     {
@@ -130,6 +146,9 @@ public class QuizManager : MonoBehaviour {
     {
         Debug.Log("Correct!");
         canvas.Success();
+
+        ScoreUp();
+        canvas.SetScore(score);
     }
 
     /**
@@ -140,5 +159,13 @@ public class QuizManager : MonoBehaviour {
         Debug.Log("Wrong!");
         canvas.Failure();
 
+    }
+
+    /**
+     * Scores up. Increse the acumulated value by 10.
+     */
+    public void ScoreUp()
+    {
+        score += 10;
     }
 }
