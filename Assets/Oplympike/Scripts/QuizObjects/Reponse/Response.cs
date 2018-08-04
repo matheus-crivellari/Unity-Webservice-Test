@@ -20,4 +20,12 @@ namespace Quiz
         public int response_code;
         public List<Question> results;
     }
+
+    [Serializable]
+    public class Error
+    {
+        public long statusCode;
+        public string errorMessage;
+
+    }
 }
