@@ -112,7 +112,7 @@ public class QuizManager : MonoBehaviour {
     public void FinishedQuiz()
     {
         if(canvas)
-            canvas.FinishedQuiz();
+            canvas.FinishedQuiz(score);
     }
 
     /**
@@ -167,5 +167,19 @@ public class QuizManager : MonoBehaviour {
     public void ScoreUp()
     {
         score += 10;
+    }
+
+    /**
+     * Strats a new try.
+     */
+    public void Restart()
+    {
+        score = 0;
+        canvas.SetScore(score);
+
+        currentQuestion = 0;
+
+        HideFeedback();
+        RenderQuestion();
     }
 }

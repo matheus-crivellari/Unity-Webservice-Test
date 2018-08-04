@@ -94,6 +94,17 @@ public class QuestionCanvas : MonoBehaviour {
             panelFinished.SetActive(true);
     }
 
+    public void FinishedQuiz(int score)
+    {
+        if (panelFinished)
+        {
+            panelFinished.SetActive(true);
+            FinishedPanel fp = panelFinished.GetComponent<FinishedPanel>();
+            fp.SetFinalScore(score);
+        }
+
+    }
+
     /**
      * Displays a new question on the screen.
      */
