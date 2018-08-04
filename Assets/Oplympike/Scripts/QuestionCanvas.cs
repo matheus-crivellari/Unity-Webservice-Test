@@ -31,23 +31,45 @@ public class QuestionCanvas : MonoBehaviour {
 
     [SerializeField]
     GameObject failureFeedback = null;
+
+    [SerializeField]
+    GameObject panelLoading = null;
+
+    [SerializeField]
+    GameObject panelFinished = null;
     #endregion
 
     public void HideFeedback()
     {
-        successFeedback.SetActive(false);
-        failureFeedback.SetActive(false);
-        Debug.Log("HideFeedback");
+        if(successFeedback)
+            successFeedback.SetActive(false);
+
+        if(failureFeedback)
+            failureFeedback.SetActive(false);
+
+        if(panelLoading)
+            panelLoading.SetActive(false);
+
+        if (panelFinished)
+            panelFinished.SetActive(false);
     }
 
     public void Success()
     {
-        successFeedback.SetActive(true);
+        if(successFeedback)
+            successFeedback.SetActive(true);
     }
 
     public void Failure()
     {
-        failureFeedback.SetActive(true);
+        if(failureFeedback)
+            failureFeedback.SetActive(true);
+    }
+
+    public void FinishedQuiz()
+    {
+        if (panelFinished)
+            panelFinished.SetActive(true);
     }
 
     public void SetQuestion(Question question, int questionNumber)

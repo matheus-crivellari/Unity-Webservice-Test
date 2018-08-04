@@ -38,6 +38,15 @@ public class QuizManager : MonoBehaviour {
             return _instance;
         }
     }
+
+    public bool IsLastQuestion
+    {
+        get
+        {
+            Debug.Log(questions.Count + ", " + currentQuestion);
+            return questions.Count-1  == currentQuestion;
+        }
+    }
     #endregion
 
     void Start () {
@@ -52,6 +61,9 @@ public class QuizManager : MonoBehaviour {
                     questions = response.results;
 
                     RenderQuestion();
+
+                    if(canvas)
+                        canvas.HideFeedback();
 
                 }),
                 new Action<Error>((Error error) => { // Error callback.
@@ -78,14 +90,22 @@ public class QuizManager : MonoBehaviour {
     public void NextQuestion()
     {
         if (currentQuestion < questions.Count)
+        {
             currentQuestion++;
+            RenderQuestion();
+        }
+    }
 
-        RenderQuestion();
+    public void FinishedQuiz()
+    {
+        if(canvas)
+            canvas.FinishedQuiz();
     }
 
     public void HideFeedback()
     {
-        canvas.HideFeedback();
+        if(canvas)
+            canvas.HideFeedback();
     }
 
     /**
