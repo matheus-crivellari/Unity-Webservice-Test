@@ -14,5 +14,5 @@ This is a simple web-service Unity test to demonstrate:
 ## To-do
 * Randomize answer options/alternatives. First is always the correct one;
 
-## Discalimer
+## Disclaimer
 This code is part of the [Olympikesoft](http://olympikesoft.com/)'s for the Unity developer job application.
